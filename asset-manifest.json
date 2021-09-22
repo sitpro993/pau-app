@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/pau-app/static/css/main.40881c33.chunk.css",
+    "main.js": "/pau-app/static/js/main.a2451b17.chunk.js",
+    "main.js.map": "/pau-app/static/js/main.a2451b17.chunk.js.map",
+    "runtime-main.js": "/pau-app/static/js/runtime-main.bb52c7a3.js",
+    "runtime-main.js.map": "/pau-app/static/js/runtime-main.bb52c7a3.js.map",
+    "static/js/2.bdfc5fc2.chunk.js": "/pau-app/static/js/2.bdfc5fc2.chunk.js",
+    "static/js/2.bdfc5fc2.chunk.js.map": "/pau-app/static/js/2.bdfc5fc2.chunk.js.map",
+    "index.html": "/pau-app/index.html",
+    "static/css/main.40881c33.chunk.css.map": "/pau-app/static/css/main.40881c33.chunk.css.map",
+    "static/js/2.bdfc5fc2.chunk.js.LICENSE.txt": "/pau-app/static/js/2.bdfc5fc2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bb52c7a3.js",
+    "static/js/2.bdfc5fc2.chunk.js",
+    "static/css/main.40881c33.chunk.css",
+    "static/js/main.a2451b17.chunk.js"
+  ]
+}
