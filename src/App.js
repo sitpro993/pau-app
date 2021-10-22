@@ -1,8 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPrefList } from "./actions/prefAction";
-import CheckBox from "./components/CheckBox";
+import LoadingBox from "./components/LoadingBox";
+import ErrorBox from "./components/ErrorBox";
 import MyChart from "./components/MyChart";
+import SelectBar from "./components/SelectBar";
+import MessageBox from "./components/MessageBox";
 
 function App() {
   const dispatch = useDispatch();
@@ -13,31 +16,41 @@ function App() {
     (state) => state.prefectureList
   );
 
+  const [options, setOptions] = useState([]);
+  const setList = (options) => {
+    setOptions(options);
+  };
+
   return (
     <div className="App">
-      <header>This is header</header>
-      <main className="row">
-        {loading ? (
-          <div>Loading...</div>
-        ) : error ? (
-          <div>{error}</div>
-        ) : (
-          <>
-            <div className="col-1-3">
-              {prefectures.result.map((prefecture) => (
-                <div key={prefecture.prefCode} className="check-conatainer">
-                  <CheckBox prefecture={prefecture}></CheckBox>
-                </div>
-              ))}
+      <header>
+        <h1 className="title-page">州の国勢調査</h1>
+        <h3 className="subtitle-page">(1960-2045)</h3>
+      </header>
+
+      {loading ? (
+        <LoadingBox></LoadingBox>
+      ) : prefectures.message ? (
+        <MessageBox message={prefectures}></MessageBox>
+      ) : error ? (
+        <ErrorBox>{error}</ErrorBox>
+      ) : (
+        <>
+          <main>
+            <div>
+              <SelectBar
+                prefectures={prefectures.result}
+                setList={setList}
+              ></SelectBar>
             </div>
-            <div className="col-2-3">
+            <div>
               <div className="chart">
-                <MyChart></MyChart>
+                <MyChart options={options}></MyChart>
               </div>
             </div>
-          </>
-        )}
-      </main>
+          </main>
+        </>
+      )}
     </div>
   );
 }

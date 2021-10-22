@@ -3,12 +3,14 @@ import { useDispatch } from "react-redux";
 import { addToDataList, removeToDataList } from "../actions/prefAction";
 
 function CheckBox(props) {
-  const { prefecture } = props;
+  const { prefecture, options } = props;
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
     if (e.target.checked) {
-      dispatch(addToDataList(prefecture.prefCode, prefecture.prefName));
+      dispatch(
+        addToDataList(prefecture.prefCode, prefecture.prefName, options)
+      );
     } else {
       dispatch(removeToDataList(prefecture.prefCode));
     }

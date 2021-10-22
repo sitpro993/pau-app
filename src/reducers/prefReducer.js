@@ -1,8 +1,9 @@
 import {
   ADD_TO_POPULATION_LIST_FAIL,
   ADD_TO_POPULATION_LIST_SUCCESS,
-  PREFECTURE_LIST_FAIL_SERVER,
-  PREFECTURE_LIST_FAIL_USER,
+  PREFECTURE_LIST_FAIL,
+  // PREFECTURE_LIST_FAIL_SERVER,
+  // PREFECTURE_LIST_FAIL_USER,
   PREFECTURE_LIST_REQUEST,
   PREFECTURE_LIST_SUCCESS,
   REMOVE_TO_POPULATION_LIST,
@@ -17,9 +18,9 @@ export const prefListReducer = (
       return { loading: true };
     case PREFECTURE_LIST_SUCCESS:
       return { loading: false, prefectures: action.payload };
-    case PREFECTURE_LIST_FAIL_SERVER:
-      return { loading: false, message: action.payload };
-    case PREFECTURE_LIST_FAIL_USER:
+    // case PREFECTURE_LIST_FAIL_SERVER:
+    //   return { loading: false, message: action.payload };
+    case PREFECTURE_LIST_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

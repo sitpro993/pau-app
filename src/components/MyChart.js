@@ -20,26 +20,28 @@ function addData(list) {
         ],
         borderColor: color,
         backgroundColor: color,
+
         yAxisID: "y",
       },
     ],
   };
-  let labels = [];
+  let datasets = [];
   list.forEach((element) => {
     element.data.forEach((e) => {
       let color = randomColor();
-      labels.push({
+      datasets.push({
         label: e.label,
         data: e.dataList,
         borderColor: color,
         backgroundColor: color,
+
         yAxisID: "y",
       });
     });
   });
   const data = {
     labels: list.length > 0 ? list[0].years : demo.labels,
-    datasets: list.length > 0 ? labels : demo.datasets,
+    datasets: list.length > 0 ? datasets : demo.datasets,
   };
   return data;
 }
@@ -55,7 +57,13 @@ function addOptions() {
     plugins: {
       title: {
         display: true,
-        text: "Chart.js Line Chart - Multi Axis",
+        text: "人口チャート",
+        font: {
+          family: "Noto Sans JP",
+          size: 20,
+          weight: "bold",
+          lineHeight: 1.2,
+        },
       },
       legend: {
         display: true,
@@ -67,27 +75,11 @@ function addOptions() {
         ticks: {
           maxTicksLimit: 5,
         },
-        // title: {
-        //   display: true,
-        //   text: "",
-        //   font: {
-        //     size: 15,
-        //   },
-        // },
       },
       y: {
         type: "linear",
         display: true,
         position: "left",
-      },
-      y1: {
-        type: "linear",
-        display: true,
-        position: "right",
-
-        grid: {
-          drawOnChartArea: false,
-        },
       },
     },
   };
@@ -96,14 +88,13 @@ function addOptions() {
 
 function MyChart(props) {
   const dataList = useSelector((state) => state.dataList);
-  const { message, list } = dataList;
+  const { list } = dataList;
   const data = addData(list);
-  console.log(data);
-  const options = addOptions();
+  const option = addOptions();
 
   return (
     <div>
-      <Line data={data} options={options} />{" "}
+      <Line data={data} options={option} />
     </div>
   );
 }
